@@ -6,10 +6,10 @@ import {
   FlatList,
   TouchableOpacity,
 } from 'react-native';
-import { useAppDispatch, useAppSelector } from '../store/hooks';
-import { fetchVendasByCliente } from '../store/slices/vendasSlice';
-import BaseModal from './BaseModal';
-import { Venda } from '../store/types';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { fetchVendasByCliente } from '../../store/slices/vendasSlice';
+import BaseModal from '../BaseModal';
+import { Venda } from '../../store/types';
 
 interface VendasModalProps {
   visible: boolean;

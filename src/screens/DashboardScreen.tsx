@@ -252,7 +252,6 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     color: '#2c3e50',
-    fontFamily: 'Roboto',
   },
   logoutButton: {
     paddingHorizontal: 16,

@@ -1,26 +1,16 @@
 import React, { useState } from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-} from 'react-native';
-import { useAppDispatch, useAppSelector } from '../store/hooks';
-import { createCliente } from '../store/slices/clientesSlice';
-import { setLoading } from '../store/slices/uiSlice';
-import BaseModal from './BaseModal';
-import AlertModal from './AlertModal';
-import ValidatedInput from './ValidatedInput';
-import DatePicker from './DatePicker';
-import { validateName, validateEmail, validateDate, formatDateForBackend } from '../utils/validation';
-import { CreateClienteData } from '../store/types';
-
-interface AddClienteModalProps {
-  visible: boolean;
-  onClose: () => void;
-  onAdd: () => void;
-  isLoading?: boolean;
-}
+import { View, Text, TouchableOpacity } from 'react-native';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { createCliente } from '../../store/slices/clientesSlice';
+import { setLoading } from '../../store/slices/uiSlice';
+import BaseModal from '../BaseModal';
+import AlertModal from '../AlertModal';
+import ValidatedInput from '../ValidatedInput';
+import DatePicker from '../DatePicker';
+import { validateName, validateEmail, validateDate, formatDateForBackend } from '../../utils/validation';
+import { CreateClienteData } from '../../store/types';
+import { AddClienteModalProps } from './types';
+import { styles } from './styles';
 
 export default function AddClienteModal({ visible, onClose, onAdd, isLoading = false }: AddClienteModalProps) {
   const dispatch = useAppDispatch();
@@ -166,47 +156,4 @@ export default function AddClienteModal({ visible, onClose, onAdd, isLoading = f
       />
     </>
   );
-}
-
-const styles = StyleSheet.create({
-  dateContainer: {
-    marginBottom: 16,
-  },
-  label: {
-    fontSize: 14,
-    fontWeight: '600',
-    color: '#2c3e50',
-    marginBottom: 8,
-  },
-  buttons: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginTop: 20,
-  },
-  cancelButton: {
-    flex: 1,
-    backgroundColor: '#95a5a6',
-    padding: 16,
-    borderRadius: 12,
-    marginRight: 10,
-    alignItems: 'center',
-  },
-  cancelButtonText: {
-    color: '#fff',
-    fontSize: 16,
-    fontWeight: '600',
-  },
-  addButton: {
-    flex: 1,
-    backgroundColor: '#27ae60',
-    padding: 16,
-    borderRadius: 12,
-    marginLeft: 10,
-    alignItems: 'center',
-  },
-  addButtonText: {
-    color: '#fff',
-    fontSize: 16,
-    fontWeight: '600',
-  },
-}); 
+} 

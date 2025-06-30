@@ -166,14 +166,12 @@ const styles = StyleSheet.create({
     color: '#2c3e50',
     textAlign: 'center',
     marginBottom: 8,
-    fontFamily: 'Roboto',
   },
   subtitle: {
     fontSize: 16,
     color: '#7f8c8d',
     textAlign: 'center',
     marginBottom: 40,
-    fontFamily: 'Roboto',
   },
   loginButton: {
     backgroundColor: '#27ae60',

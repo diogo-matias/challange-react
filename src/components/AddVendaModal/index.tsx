@@ -1,28 +1,16 @@
 import React, { useState } from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-} from 'react-native';
-import { useAppDispatch, useAppSelector } from '../store/hooks';
-import { createVenda } from '../store/slices/vendasSlice';
-import { setLoading } from '../store/slices/uiSlice';
-import BaseModal from './BaseModal';
-import AlertModal from './AlertModal';
-import ValidatedInput from './ValidatedInput';
-import DatePicker from './DatePicker';
-import { validateValue, validateDate, formatDateForBackend } from '../utils/validation';
-import { CreateVendaData } from '../store/types';
-
-interface AddVendaModalProps {
-  visible: boolean;
-  clienteId: number;
-  clienteNome: string;
-  onSuccess: () => void;
-  onClose: () => void;
-  isLoading?: boolean;
-}
+import { View, Text, TouchableOpacity } from 'react-native';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { createVenda } from '../../store/slices/vendasSlice';
+import { setLoading } from '../../store/slices/uiSlice';
+import BaseModal from '../BaseModal';
+import AlertModal from '../AlertModal';
+import ValidatedInput from '../ValidatedInput';
+import DatePicker from '../DatePicker';
+import { validateValue, validateDate, formatDateForBackend } from '../../utils/validation';
+import { CreateVendaData } from '../../store/types';
+import { AddVendaModalProps } from './types';
+import { styles } from './styles';
 
 export default function AddVendaModal({ visible, clienteId, clienteNome, onSuccess, onClose, isLoading = false }: AddVendaModalProps) {
   const dispatch = useAppDispatch();
@@ -172,54 +160,4 @@ export default function AddVendaModal({ visible, clienteId, clienteNome, onSucce
       />
     </>
   );
-}
-
-const styles = StyleSheet.create({
-  clienteInfo: {
-    fontSize: 16,
-    fontWeight: '600',
-    color: '#2c3e50',
-    marginBottom: 20,
-    textAlign: 'center',
-  },
-  dateContainer: {
-    marginBottom: 16,
-  },
-  label: {
-    fontSize: 14,
-    fontWeight: '600',
-    color: '#2c3e50',
-    marginBottom: 8,
-  },
-  buttons: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginTop: 20,
-  },
-  cancelButton: {
-    flex: 1,
-    backgroundColor: '#95a5a6',
-    padding: 16,
-    borderRadius: 12,
-    marginRight: 10,
-    alignItems: 'center',
-  },
-  cancelButtonText: {
-    color: '#fff',
-    fontSize: 16,
-    fontWeight: '600',
-  },
-  addButton: {
-    flex: 1,
-    backgroundColor: '#27ae60',
-    padding: 16,
-    borderRadius: 12,
-    marginLeft: 10,
-    alignItems: 'center',
-  },
-  addButtonText: {
-    color: '#fff',
-    fontSize: 16,
-    fontWeight: '600',
-  },
-}); 
+} 
