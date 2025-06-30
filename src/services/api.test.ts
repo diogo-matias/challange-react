@@ -27,7 +27,7 @@ describe('api service', () => {
     jest.spyOn(AsyncStorage, 'removeItem').mockResolvedValue();
     const error = { response: { status: 401 } };
     // @ts-ignore
-    await api.interceptors.response.handlers[0].rejected(error);
+    await expect(api.interceptors.response.handlers[0].rejected(error)).rejects.toBe(error);
     expect(AsyncStorage.removeItem).toHaveBeenCalledWith('authToken');
   });
 }); 
