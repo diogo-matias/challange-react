@@ -1,12 +1,10 @@
 import { Cliente } from '../store/types';
 
 export function normalizarClientes(apiResponse: any): Cliente[] {
-  // Se já for um array de clientes normalizados, retorna direto
   if (Array.isArray(apiResponse) && apiResponse.length > 0 && typeof apiResponse[0].nomeCompleto === 'string' && typeof apiResponse[0].email === 'string') {
     return apiResponse;
   }
 
-  // Se vier no formato { data: { clientes: [...] } }
   if (apiResponse && apiResponse.data && Array.isArray(apiResponse.data.clientes)) {
     return apiResponse.data.clientes.map((item: any, idx: number) => {
       const info = item.info || {};
@@ -29,6 +27,5 @@ export function normalizarClientes(apiResponse: any): Cliente[] {
     });
   }
 
-  // Se não for nenhum dos formatos esperados, retorna array vazio
   return [];
 } 
