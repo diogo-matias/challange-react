@@ -1,22 +1,5 @@
 {
     "buildCommand": "npm run build:web",
     "outputDirectory": "dist",
-    "framework": "expo",
-    "installCommand": "npm install",
-    "devCommand": "npm run web",
-    "builds": [
-        {
-            "src": "package.json",
-            "use": "@vercel/static-build",
-            "config": {
-                "distDir": "dist"
-            }
-        }
-    ],
-    "routes": [
-        {
-            "src": "/(.*)",
-            "dest": "/index.html"
-        }
-    ]
+    "installCommand": "npm install --force"
 }
