@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { ClientesState, CreateClienteData, UpdateClienteData } from '../types';
 import { api } from '../../services/api';
+import { normalizarClientes } from '../../utils/normalizarClientes';
 
 const initialState: ClientesState = {
   clientes: [],
@@ -14,7 +15,7 @@ export const fetchClientes = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const response = await api.get('/clientes');
-      return response.data;
+      return normalizarClientes(response.data);
     } catch (error: any) {
       return rejectWithValue(error.response?.data?.message || 'Erro ao carregar clientes');
     }

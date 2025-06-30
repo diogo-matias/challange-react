@@ -166,7 +166,7 @@ export default function DashboardScreen() {
               <ClientesList
                 clientes={clientes}
                 getFirstMissingLetter={getFirstMissingLetter}
-                onRefresh={() => dispatch(fetchClientes())}
+                onRefresh={loadData}
                 onViewVendas={handleViewVendas}
                 isLoading={clientesLoading}
               />
