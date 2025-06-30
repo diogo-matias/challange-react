@@ -1,46 +1,56 @@
 import { StyleSheet } from 'react-native';
 
+const RADIUS = 20;
+const SHADOW = {
+  shadowColor: '#000',
+  shadowOffset: { width: 0, height: 4 },
+  shadowOpacity: 0.10,
+  shadowRadius: 12,
+  elevation: 4,
+};
+
 export const styles = StyleSheet.create({
   alertContainer: {
-    backgroundColor: 'white',
-    borderRadius: 12,
-    borderWidth: 2,
-    padding: 20,
+    borderRadius: RADIUS,
+    borderWidth: 1.5,
+    padding: 24,
     minHeight: 120,
+    ...SHADOW,
   },
   message: {
     fontSize: 16,
     textAlign: 'center',
     lineHeight: 22,
-    marginBottom: 20,
+    marginBottom: 24,
     flexShrink: 1,
+    fontWeight: '500',
   },
   footer: {
     flexDirection: 'row',
-    gap: 10,
+    gap: 12,
     marginTop: 'auto',
   },
   button: {
     flex: 1,
-    paddingVertical: 12,
-    paddingHorizontal: 20,
-    borderRadius: 8,
+    paddingVertical: 14,
+    paddingHorizontal: 18,
+    borderRadius: 16,
     alignItems: 'center',
     minHeight: 44,
   },
   cancelButton: {
-    backgroundColor: '#6c757d',
+    backgroundColor: '#64748b',
   },
   confirmButton: {
-    backgroundColor: '#007bff',
+    backgroundColor: '#6366f1',
   },
   cancelButtonText: {
-    color: 'white',
+    color: '#fff',
     fontSize: 16,
     fontWeight: '600',
   },
   confirmButtonText: {
-    color: 'white',
+    color: '#fff',
     fontSize: 16,
     fontWeight: '600',
   },

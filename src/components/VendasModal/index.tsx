@@ -101,23 +101,32 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 20,
+    marginBottom: 24,
+    paddingHorizontal: 4,
   },
   totalText: {
     fontSize: 18,
     fontWeight: 'bold',
-    color: '#2c3e50',
+    color: '#1e293b',
   },
   addButton: {
-    backgroundColor: '#27ae60',
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-    borderRadius: 8,
+    backgroundColor: '#6366f1',
+    paddingHorizontal: 20,
+    paddingVertical: 12,
+    borderRadius: 18,
+    ...{
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 4 },
+      shadowOpacity: 0.10,
+      shadowRadius: 12,
+      elevation: 4,
+    },
   },
   addButtonText: {
     color: '#fff',
-    fontSize: 14,
+    fontSize: 15,
     fontWeight: '600',
+    letterSpacing: 0.2,
   },
   loadingContainer: {
     flex: 1,
@@ -127,7 +136,7 @@ const styles = StyleSheet.create({
   },
   loadingText: {
     fontSize: 16,
-    color: '#7f8c8d',
+    color: '#64748b',
   },
   emptyContainer: {
     flex: 1,
@@ -137,16 +146,16 @@ const styles = StyleSheet.create({
   },
   emptyText: {
     fontSize: 16,
-    color: '#7f8c8d',
+    color: '#64748b',
   },
   list: {
     flex: 1,
   },
   vendaItem: {
-    backgroundColor: '#f8f9fa',
-    borderRadius: 8,
+    backgroundColor: '#f1f5f9',
+    borderRadius: 14,
     padding: 16,
-    marginBottom: 8,
+    marginBottom: 10,
   },
   vendaHeader: {
     flexDirection: 'row',
@@ -155,12 +164,12 @@ const styles = StyleSheet.create({
   },
   vendaDate: {
     fontSize: 14,
-    color: '#2c3e50',
+    color: '#1e293b',
     fontWeight: '500',
   },
   vendaValue: {
     fontSize: 16,
-    color: '#27ae60',
+    color: '#6366f1',
     fontWeight: 'bold',
   },
 }); 

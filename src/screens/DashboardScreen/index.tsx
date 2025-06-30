@@ -8,26 +8,27 @@ import {
   RefreshControl,
   Dimensions,
 } from 'react-native';
-import { useAppDispatch, useAppSelector } from '../store/hooks';
-import { logout } from '../store/slices/authSlice';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { logout } from '../../store/slices/authSlice';
 import { 
   fetchClientes, 
   setSelectedCliente, 
   clearSelectedCliente,
   createCliente
-} from '../store/slices/clientesSlice';
+} from '../../store/slices/clientesSlice';
 import { 
   fetchVendasPorDia, 
   fetchEstatisticas 
-} from '../store/slices/vendasSlice';
-import { openModal, closeModal } from '../store/slices/uiSlice';
-import ClientesList from '../components/ClientesList';
-import EstatisticasCard from '../components/EstatisticasCard';
-import VendasChart from '../components/VendasChart';
-import AddClienteModal from '../components/AddClienteModal';
-import VendasModal from '../components/VendasModal';
-import AddVendaModal from '../components/AddVendaModal';
-import Shimmer from '../components/Shimmer';
+} from '../../store/slices/vendasSlice';
+import { openModal, closeModal } from '../../store/slices/uiSlice';
+import ClientesList from '../../components/ClientesList';
+import EstatisticasCard from '../../components/EstatisticasCard';
+import VendasChart from '../../components/VendasChart';
+import AddClienteModal from '../../components/AddClienteModal';
+import VendasModal from '../../components/VendasModal';
+import AddVendaModal from '../../components/AddVendaModal';
+import Shimmer from '../../components/Shimmer';
+import styles from './styles';
 
 const { width, height } = Dimensions.get('window');
 
@@ -97,7 +98,9 @@ export default function DashboardScreen() {
         <View style={styles.iphoneFrame}>
           <View style={styles.iphoneScreen}>
             <View style={styles.header}>
-              <Text style={styles.title}>Loja de Brinquedos</Text>
+              <View style={styles.headerCenter}>
+                <Text style={styles.title}>Loja de Brinquedos</Text>
+              </View>
               <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
                 <Text style={styles.logoutText}>Sair</Text>
               </TouchableOpacity>
@@ -129,7 +132,10 @@ export default function DashboardScreen() {
       <View style={styles.iphoneFrame}>
         <View style={styles.iphoneScreen}>
           <View style={styles.header}>
-            <Text style={styles.title}>Loja de Brinquedos</Text>
+            <View style={styles.headerCenter}>
+              <Text style={styles.bear}>🧸</Text>
+              <Text style={styles.title}>Loja de Brinquedos</Text>
+            </View>
             <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
               <Text style={styles.logoutText}>Sair</Text>
             </TouchableOpacity>
@@ -204,101 +210,4 @@ export default function DashboardScreen() {
       )}
     </View>
   );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  iphoneFrame: {
-    width: Math.min(width * 0.9, 375),
-    height: Math.min(height * 0.9, 812),
-    backgroundColor: '#000',
-    borderRadius: 40,
-    padding: 8,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 10,
-    },
-    shadowOpacity: 0.3,
-    shadowRadius: 20,
-    elevation: 10,
-  },
-  iphoneScreen: {
-    flex: 1,
-    backgroundColor: '#f4f2ee',
-    borderRadius: 32,
-    overflow: 'hidden',
-    position: 'relative',
-  },
-  header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingHorizontal: 20,
-    paddingTop: 50,
-    paddingBottom: 20,
-    backgroundColor: '#fff',
-    borderBottomWidth: 1,
-    borderBottomColor: '#e1e8ed',
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: '#2c3e50',
-  },
-  logoutButton: {
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-    backgroundColor: '#e74c3c',
-    borderRadius: 8,
-  },
-  logoutText: {
-    color: '#fff',
-    fontSize: 14,
-    fontWeight: '600',
-  },
-  scrollView: {
-    flex: 1,
-  },
-  content: {
-    padding: 20,
-  },
-  addButton: {
-    backgroundColor: '#27ae60',
-    padding: 16,
-    borderRadius: 12,
-    alignItems: 'center',
-    marginBottom: 20,
-  },
-  addButtonText: {
-    color: '#fff',
-    fontSize: 16,
-    fontWeight: '600',
-  },
-  loadingText: {
-    fontSize: 18,
-    textAlign: 'center',
-    marginTop: 50,
-    color: '#7f8c8d',
-  },
-  addButtonShimmer: {
-    marginBottom: 20,
-  },
-  cardShimmer: {
-    marginBottom: 20,
-  },
-  clientesShimmer: {
-    marginTop: 20,
-  },
-  titleShimmer: {
-    marginBottom: 16,
-  },
-  searchShimmer: {
-    marginBottom: 16,
-  },
-}); 
+} 

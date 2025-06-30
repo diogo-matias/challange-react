@@ -13,6 +13,7 @@ export default function ValidatedInput({ error, label, style, ...props }: Valida
           error ? styles.inputError : null,
           style,
         ]}
+        placeholderTextColor="#94a3b8"
         {...props}
       />
       {error && <Text style={styles.errorText}>{error}</Text>}
