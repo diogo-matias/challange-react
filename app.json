@@ -21,7 +21,8 @@
         },
         "web": {
             "bundler": "webpack",
-            "webpackConfig": "./webpack.config.js"
+            "webpackConfig": "./webpack.config.js",
+            "output": "static"
         }
     }
 }
