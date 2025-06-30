@@ -1,5 +1,5 @@
 {
     "buildCommand": "npm run build:web",
-    "outputDirectory": "dist",
+    "outputDirectory": ".expo/web",
     "installCommand": "npm install --force"
 }
