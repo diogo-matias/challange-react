@@ -343,12 +343,12 @@ export default function ClientesList({
                 <Text style={styles.detailLabel}>Email:</Text> {item.email}
               </Text>
               <Text style={styles.clienteDetail}>
-                <Text style={styles.detailLabel}>Nascimento:</Text>{' '}
-                {new Date(item.dataNascimento).toLocaleDateString('pt-BR')}
+                <Text style={styles.detailLabel}>Nascimento:</Text>
+                {' '}{new Date(item.dataNascimento).toLocaleDateString('pt-BR')}
               </Text>
               <Text style={styles.clienteDetail}>
-                <Text style={styles.detailLabel}>Total de vendas:</Text>{' '}
-                {item.vendas?.length || 0}
+                <Text style={styles.detailLabel}>Total de vendas:</Text>
+                {' '}{item.vendas?.length || 0}
               </Text>
             </>
           )}

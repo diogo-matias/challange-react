@@ -63,8 +63,15 @@ export default function LoginScreen() {
       <View style={styles.iphoneFrame}>
         <View style={styles.iphoneScreen}>
           <View style={styles.content}>
+            <Text style={styles.emoji}>🧸</Text>
             <Text style={styles.title}>Loja de Brinquedos</Text>
             <Text style={styles.subtitle}>Faça login para continuar</Text>
+
+            <View style={styles.testCredentials}>
+              <Text style={styles.testTitle}>Login teste:</Text>
+              <Text style={styles.testText}>Usuário: <Text style={styles.testHighlight}>admin</Text></Text>
+              <Text style={styles.testText}>Senha: <Text style={styles.testHighlight}>password</Text></Text>
+            </View>
 
             <ValidatedInput
               label="Usuário"
@@ -179,5 +186,37 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 16,
     fontWeight: '600',
+  },
+  testCredentials: {
+    backgroundColor: '#f8f9fa',
+    padding: 16,
+    borderRadius: 12,
+    marginBottom: 20,
+    borderWidth: 1,
+    borderColor: '#e9ecef',
+  },
+  testTitle: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#2c3e50',
+    marginBottom: 8,
+    textAlign: 'center',
+  },
+  testText: {
+    fontSize: 14,
+    color: '#6c757d',
+    textAlign: 'center',
+    marginBottom: 2,
+  },
+  testHighlight: {
+    fontWeight: 'bold',
+    color: '#27ae60',
+  },
+  emoji: {
+    fontSize: 32,
+    fontWeight: 'bold',
+    color: '#2c3e50',
+    textAlign: 'center',
+    marginBottom: 8,
   },
 }); 

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   View,
   Text,
@@ -27,6 +27,7 @@ import VendasChart from '../components/VendasChart';
 import AddClienteModal from '../components/AddClienteModal';
 import VendasModal from '../components/VendasModal';
 import AddVendaModal from '../components/AddVendaModal';
+import Shimmer from '../components/Shimmer';
 
 const { width, height } = Dimensions.get('window');
 
@@ -35,17 +36,24 @@ export default function DashboardScreen() {
   const { clientes, selectedCliente, isLoading: clientesLoading } = useAppSelector((state: any) => state.clientes);
   const { vendasPorDia, estatisticas, isLoading: vendasLoading } = useAppSelector((state: any) => state.vendas);
   const { modals, loading } = useAppSelector((state: any) => state.ui);
+  
+  const [isInitialLoading, setIsInitialLoading] = useState(true);
 
   useEffect(() => {
     loadData();
   }, []);
 
   const loadData = async () => {
-    await Promise.all([
-      dispatch(fetchClientes()),
-      dispatch(fetchEstatisticas()),
-      dispatch(fetchVendasPorDia()),
-    ]);
+    try {
+      await Promise.all([
+        dispatch(fetchClientes()),
+        dispatch(fetchEstatisticas()),
+        dispatch(fetchVendasPorDia()),
+      ]);
+    } finally {
+      // Garante que o loading inicial seja removido mesmo se houver erro
+      setTimeout(() => setIsInitialLoading(false), 500);
+    }
   };
 
   const handleLogout = () => {
@@ -83,6 +91,40 @@ export default function DashboardScreen() {
   };
 
   const isLoading = clientesLoading || vendasLoading;
+
+  // Mostra shimmer durante o carregamento inicial
+  if (isInitialLoading) {
+    return (
+      <View style={styles.container}>
+        <View style={styles.iphoneFrame}>
+          <View style={styles.iphoneScreen}>
+            <View style={styles.header}>
+              <Text style={styles.title}>Loja de Brinquedos</Text>
+              <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
+                <Text style={styles.logoutText}>Sair</Text>
+              </TouchableOpacity>
+            </View>
+
+            <ScrollView style={styles.scrollView}>
+              <View style={styles.content}>
+                <Shimmer width="100%" height={56} borderRadius={12} style={styles.addButtonShimmer} />
+                
+                <Shimmer width="100%" height={120} borderRadius={12} style={styles.cardShimmer} />
+                <Shimmer width="100%" height={200} borderRadius={12} style={styles.cardShimmer} />
+                
+                <View style={styles.clientesShimmer}>
+                  <Shimmer width="50%" height={20} borderRadius={4} style={styles.titleShimmer} />
+                  <Shimmer width="100%" height={56} borderRadius={12} style={styles.searchShimmer} />
+                  <Shimmer width="100%" height={120} borderRadius={12} style={styles.cardShimmer} />
+                  <Shimmer width="100%" height={120} borderRadius={12} style={styles.cardShimmer} />
+                </View>
+              </View>
+            </ScrollView>
+          </View>
+        </View>
+      </View>
+    );
+  }
 
   return (
     <View style={styles.container}>
@@ -246,5 +288,20 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginTop: 50,
     color: '#7f8c8d',
+  },
+  addButtonShimmer: {
+    marginBottom: 20,
+  },
+  cardShimmer: {
+    marginBottom: 20,
+  },
+  clientesShimmer: {
+    marginTop: 20,
+  },
+  titleShimmer: {
+    marginBottom: 16,
+  },
+  searchShimmer: {
+    marginBottom: 16,
   },
 }); 
