@@ -28,7 +28,7 @@ export default function AddClienteModal({ visible, onClose, onAdd, isLoading = f
     dataNascimento: '',
   });
 
-  // Estado para o modal de erro
+
   const [errorModalVisible, setErrorModalVisible] = useState(false);
 
   const validateForm = (): boolean => {
@@ -59,7 +59,7 @@ export default function AddClienteModal({ visible, onClose, onAdd, isLoading = f
       const result = await dispatch(createCliente(clienteData));
       if (createCliente.fulfilled.match(result)) {
         handleClose();
-        onAdd(); // Chama apenas o callback, não faz nova requisição
+        onAdd();
       } else {
         setErrorModalVisible(true);
       }
@@ -156,4 +156,4 @@ export default function AddClienteModal({ visible, onClose, onAdd, isLoading = f
       />
     </>
   );
-} 
+}

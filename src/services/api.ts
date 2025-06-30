@@ -1,17 +1,15 @@
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-// Configuração da URL base da API com fallback
 const BASE_URL = process.env.BASE_URL || 'https://challange-react-backend.onrender.com';
 
 const api = axios.create({
   baseURL: BASE_URL,
-  timeout: 10000, // 10 segundos de timeout
+  timeout: 10000,
 });
 
 api.interceptors.request.use(
   async (config) => {
-    // Configuração básica de headers
     config.headers['Content-Type'] = 'application/json';
     config.headers['Accept'] = 'application/json';
     

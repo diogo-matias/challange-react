@@ -26,7 +26,6 @@ export default function AddVendaModal({ visible, clienteId, clienteNome, onSucce
     data: '',
   });
 
-  // Estados para os modais
   const [errorModalVisible, setErrorModalVisible] = useState(false);
   const [successModalVisible, setSuccessModalVisible] = useState(false);
   const [apiErrorModalVisible, setApiErrorModalVisible] = useState(false);
@@ -160,4 +159,4 @@ export default function AddVendaModal({ visible, clienteId, clienteNome, onSucce
       />
     </>
   );
-} 
+}

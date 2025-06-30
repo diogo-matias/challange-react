@@ -13,4 +13,4 @@ export default function ShimmerCard({ height = 120, style }: ShimmerCardProps) {
       <Shimmer width="50%" height={14} borderRadius={4} style={styles.content} />
     </View>
   );
-} 
+}

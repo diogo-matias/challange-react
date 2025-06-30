@@ -19,7 +19,6 @@ import { Cliente } from '../../store/types';
 import { ClientesListProps } from './types';
 import { styles } from './styles';
 
-// Função para converter data do backend (YYYY-MM-DD) para frontend (DD/MM/AAAA)
 const formatDateForFrontend = (dateString: string): string => {
   if (!dateString) return '';
   
@@ -54,13 +53,8 @@ export default function ClientesList({
     dataNascimento: '',
   });
 
-  // Estado para controlar quantos clientes mostrar
   const [showAll, setShowAll] = useState(false);
-
-  // Estado para o filtro local
   const [filterText, setFilterText] = useState('');
-
-  // Estados para o modal
   const [modalVisible, setModalVisible] = useState(false);
   const [modalConfig, setModalConfig] = useState({
     title: '',
@@ -72,7 +66,7 @@ export default function ClientesList({
     showCancel: false,
   });
 
-  // Filtrar clientes localmente
+
   const filteredClientes = clientes.filter(cliente => {
     if (!filterText.trim()) return true;
     const searchTerm = filterText.toLowerCase();
@@ -82,7 +76,7 @@ export default function ClientesList({
     );
   });
 
-  // Limitar a exibição a 2 clientes inicialmente
+
   const displayedClientes = showAll ? filteredClientes : filteredClientes.slice(0, 2);
   const hasMoreClientes = filteredClientes.length > 2;
 

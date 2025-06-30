@@ -51,7 +51,6 @@ export default function DashboardScreen() {
         dispatch(fetchVendasPorDia()),
       ]);
     } finally {
-      // Garante que o loading inicial seja removido mesmo se houver erro
       setTimeout(() => setIsInitialLoading(false), 500);
     }
   };
@@ -75,7 +74,7 @@ export default function DashboardScreen() {
 
   const handleClienteCreated = () => {
     dispatch(closeModal('addCliente'));
-    // Não precisa recarregar dados pois o Redux já atualizou o estado
+
   };
 
   const getFirstMissingLetter = (nome: string): string => {
@@ -92,7 +91,6 @@ export default function DashboardScreen() {
 
   const isLoading = clientesLoading || vendasLoading;
 
-  // Mostra shimmer durante o carregamento inicial
   if (isInitialLoading) {
     return (
       <View style={styles.container}>
