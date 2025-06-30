@@ -20,9 +20,12 @@
             "usesCleartextTraffic": true
         },
         "web": {
-            "bundler": "webpack",
-            "webpackConfig": "./webpack.config.js",
             "output": "static"
+        },
+        "extra": {
+            "eas": {
+                "projectId": "a090786c-75ef-45cc-a27d-22c0aa6bb980"
+            }
         }
     }
 }
